@@ -1,0 +1,18 @@
+class Solution {
+    fun main(args: Array<String>) {
+        val intArray = intArrayOf(2, 7, 11, 13)
+        print("${twoSum(numberArray = intArray, target = 9)}")
+    }
+
+    private fun twoSum(numberArray: IntArray, target: Int): IntArray {
+
+        for(i in numberArray.indices){
+            for(j in i +1 until numberArray.size){
+                if(numberArray[i] + numberArray[j] == target){
+                    return intArrayOf(i, j)
+                }
+            }
+        }
+        return intArrayOf(0, 0)
+    }
+}
