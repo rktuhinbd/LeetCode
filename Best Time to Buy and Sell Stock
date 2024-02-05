@@ -1,0 +1,51 @@
+class Solution {
+
+    fun main(args: Array<String>) {
+
+        val intArray = intArrayOf(7, 1, 5, 3, 6, 4)
+        print("${maxProfit(prices = intArray)}")
+    }
+
+    fun maxProfit(prices: IntArray): Int {
+        
+        var lowestPrice = prices[0]
+        var lowestPriceIndex = 0
+
+        var highestPrice = prices[0]
+        var highestPriceIndex = 0
+
+        var profit = 0
+
+        for(i in prices.indices){
+
+            if(prices[i] < lowestPrice){
+                lowestPrice = prices[i]
+                lowestPriceIndex = i
+            }
+
+            if(prices[i] > highestPrice){
+                highestPrice = prices[i]
+                highestPriceIndex = i
+            }
+        }
+
+        if(lowestPriceIndex < highestPriceIndex){
+            profit = highestPrice - lowestPrice
+        } else {
+
+            highestPrice = prices[lowestPriceIndex]
+
+            for(i in lowestPriceIndex until prices.size){
+                if(prices[i] > highestPrice){
+                    highestPrice = prices[i]
+                    highestPriceIndex = i
+                }
+            }
+
+            if(lowestPriceIndex < highestPriceIndex){
+                profit = highestPrice - lowestPrice
+            }
+        }
+        return profit
+    }
+}
